@@ -23,14 +23,11 @@ window.onload = function(){
   })
   */
   let button = document.getElementById("search");
-  let bb = document.getElementById('b');
-  button.addEventListener('click',() => {
-    fetch('http://localhost:8080/info2180-lab6/superheroes.php').then(response => response.text())
-    .then(data => {
-      alert(data);
-    }).catch(error => {
-      console.log(error);
-    });
-
+  fetch('http://localhost:8080/info2180-lab6/superheroes.php').then(response => response.text())
+  .then(data => {
+    console.log(alert(data));
+  }).catch(error => {
+    console.log(error);
   });
+
 }
