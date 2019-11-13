@@ -1,33 +1,28 @@
+const process = () =>
+{
+  var s = "blank";
+  if(document.getElementById("inp").value)
+  {
+    s=document.getElementById("inp").value
+  }
 
+  showResult(s);
+}
+function showResult(str) {
+  if (str.length==0) {
+    document.getElementById("searchResult").innerHTML="";
+    document.getElementById("searchResult").style.border="0px";
+    return;
+  }
 
-window.onload = function(){
-  /*
-  let button = document.getElementById("search");
+  xmlhttp=new XMLHttpRequest();
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("searchResult").innerHTML=this.responseText;
+      document.getElementById("searchResult").style.border="none";
 
-  button.addEventListener("click",function(){
-    let xmls = new XMLHttpRequest();
-    xmls.onreadystatechange =function(){
-      if(this.readyState === 4)
-      {
-        if(this.status === 200){
-          //var response = httprequest.responseText;
-          alert("well Done");
-        }
-        else{
-          console.log(error);
-        }
-      }
     }
-    xmls.open('GET', url);
-    xmls.send();
-  })
-  */
-  let button = document.getElementById("search");
-  fetch('http://localhost:8080/info2180-lab6/superheroes.php').then(response => response.text())
-  .then(data => {
-    console.log(alert(data));
-  }).catch(error => {
-    console.log(error);
-  });
-
+  }
+  xmlhttp.open("GET","superheroes.php?query="+str,true);
+  xmlhttp.send();
 }

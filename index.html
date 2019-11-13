@@ -3,18 +3,29 @@
   <head>
     <meta charset="utf-8">
     <title>Avengers Character Search</title>
-    <script type="text/javascript" src="app.js">
-
-    </script>
+    <script type="text/javascript" src="app.js"></script>
+    <link rel="stylesheet" href="app.css" media="screen">
   </head>
   <body>
-    <div class="">
-      <h1>Avengers Character Search</h1>
-      <div class="">
-        <button type="button" id="search">Search</button>
+    <div class="wrapper">
+      <div class="head">
+        <h1>AVENGERS CHARACTER SEARCH</h1>
       </div>
-      <div id="result">
+
+      <div class="sRe">
+        <div class="search_Container ">
+          <div class="searchBox">
+            <p>Search by Fullname or Alias</p>
+            <form class="search" action="#" method="post">
+              <input type="text" size="30" id="inp">
+              <button type="button" name="button" onclick="process()">Search</button>
+            </form>
+          </div>
+          <h2>Results</h2>
+          <hr>
+          <div id="searchResult"></div>
         </div>
+      </div>
     </div>
   </body>
 </html>

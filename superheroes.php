@@ -1,5 +1,6 @@
 <?php
-
+$q = $_GET["query"];
+//$q = "Steve Rogers";
 $superheroes = [
   [
       "id" => 1,
@@ -63,10 +64,31 @@ $superheroes = [
   ],
 ];
 
+
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
-<?php endforeach; ?>
-</ul>
+
+
+  <?php $found=-1; ?>
+
+  <?php if($q=="blank"): ?>
+    <ul>
+      <?php foreach ($superheroes as $superhero): ?>
+        <li><?= $superhero['alias']; ?></li>
+      <?php endforeach; ?>
+    </ul>
+
+  <?php else: ?>
+    <?php for ($i=0; $i < 10; $i++): ?>
+      <?php if ($superheroes[$i]["name"]==$q ||$superheroes[$i]["alias"]==$q): ?>
+        <h2><?=$superheroes[$i]["name"]; ?></h2>
+        <h3><?="A.K.A ",$superheroes[$i]["alias"]; ?></h3>
+        <p><?=$superheroes[$i]["biography"]; ?></p>
+        <?php $found=1; ?>
+      <?php endif; ?>
+    <?php endfor; ?>
+    <?php if($found==-1): ?>
+      <h3 style="color:red"><?="SUPERHERO NOT FOUND"; ?></h3>
+    <?php endif; ?>
+
+  <?php endif; ?>
